@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  transactions Transaction[]
+  categories   Category[]
+  goals        Goal[]
+  budgets      Budget[]
+
+  @@map("users")
+}
+
+model Category {
+  id     String @id @default(uuid())
+  name   String
+  color  String @default("#6366f1")
+  icon   String @default("tag")
+  userId String
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+  budgets      Budget[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("categories")
+}
+
+model Transaction {
+  id          String          @id @default(uuid())
+  title       String
+  description String?
+  amount      Decimal         @db.Decimal(10, 2)
+  type        TransactionType
+  date        DateTime
+  userId      String
+  categoryId  String
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("transactions")
+}
+
+model Goal {
+  id            String   @id @default(uuid())
+  title         String
+  description   String?
+  targetAmount  Decimal  @db.Decimal(10, 2)
+  currentAmount Decimal  @default(0) @db.Decimal(10, 2)
+  deadline      DateTime
+  color         String   @default("#6366f1")
+  userId        String
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("goals")
+}
+
+model Budget {
+  id         String @id @default(uuid())
+  userId     String
+  categoryId String
+  month      Int
+  year       Int
+  amount     Decimal @db.Decimal(10, 2)
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, categoryId, month, year])
+  @@map("budgets")
+}
