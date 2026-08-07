@@ -29,7 +29,7 @@
 
 ## 🌐 Link da Aplicação Hospedada
 
-> 🚀 **Acesse o projeto online**: [https://seu-link-aqui.vercel.app](https://seu-link-aqui.vercel.app) *(Substitua `https://seu-link-aqui.vercel.app` pela URL da sua aplicação após o deploy)*
+> 🚀 **Acesse o projeto online**: [https://financas-pro-rosy.vercel.app](https://financas-pro-rosy.vercel.app)
 
 ---
 
