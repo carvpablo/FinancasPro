@@ -4,6 +4,10 @@
 
 **Sistema Completo de Gestão Financeira Pessoal**
 
+[![Demonstração Online](https://img.shields.io/badge/🌐%20Acessar%20Aplicação-Live%20Demo-0070f3?style=for-the-badge&logo=vercel&logoColor=white)](https://seu-link-aqui.vercel.app)
+
+<br />
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![React](https://img.shields.io/badge/React-19-blue?logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?logo=typescript)](https://www.typescriptlang.org/)
@@ -23,8 +27,15 @@
 
 ---
 
+## 🌐 Link da Aplicação Hospedada
+
+> 🚀 **Acesse o projeto online**: [https://seu-link-aqui.vercel.app](https://seu-link-aqui.vercel.app) *(Substitua `https://seu-link-aqui.vercel.app` pela URL da sua aplicação após o deploy)*
+
+---
+
 ## 📌 Índice
 
+- [🌐 Link da Aplicação Hospedada](#-link-da-aplicação-hospedada)
 - [Visão Geral](#-visão-geral)
 - [Funcionalidades Principais](#-funcionalidades-principais)
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
